@@ -29,7 +29,7 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function edit() {
 	return (
 		<p { ...useBlockProps() }>
 			{ __( 'Ct Blockmania – hello from the editor!', 'ct-blockmania' ) }
