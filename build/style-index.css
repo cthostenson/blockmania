@@ -51,5 +51,67 @@
   font-weight: 300;
   font-size: 0.7em;
 }
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-create-block-profile {
+  border: 0.1em solid #aaaaaa;
+  border-radius: 0.5em;
+  color: #000;
+  margin: 0 auto;
+  background-color: #F3F3F3;
+}
+.wp-block-create-block-profile .program-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25% 75%;
+  grid-template-columns: 25% 75%;
+}
+.wp-block-create-block-profile .program-column {
+  padding: 15px;
+}
+.wp-block-create-block-profile .stars {
+  text-align: center;
+  font-size: 2em;
+  letter-spacing: 0.5em;
+  margin-top: 0.5em;
+  color: gold;
+}
+.wp-block-create-block-profile .stars select {
+  width: 10em;
+}
+.wp-block-create-block-profile .quote {
+  width: 100%;
+  padding: 1.5em;
+  line-height: 1.5;
+}
+.wp-block-create-block-profile .quote-profile {
+  background-color: white;
+  border-radius: 0 0 0.5em 0.5em;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wp-block-create-block-profile .quote-profile .photo img {
+  width: 75px;
+  height: 75px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-right: 2em;
+}
+.wp-block-create-block-profile .quote-profile .author, .wp-block-create-block-profile .quote-profile .location {
+  margin: 0;
+  text-align: right;
+  font-weight: 700;
+}
+.wp-block-create-block-profile .quote-profile .location {
+  font-weight: 300;
+  font-size: 0.7em;
+}
 
 /*# sourceMappingURL=style-index.css.map*/
