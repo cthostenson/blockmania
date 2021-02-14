@@ -75,6 +75,22 @@ registerBlockType( 'create-block/testimonial', {
 
 	keywords: ['blockmania', __('testimonial'), __('review'), 'ct'],
 
+	attributes: {
+		quote: {
+			type: 'string',
+			source: 'html',
+			selector: '.quote',
+		},
+		stars: {
+			type: 'number',
+			default: 5,
+		},
+		imgUrl: {
+			type: 'string',
+			default: 'https://placehold.it/75/',
+		}
+	},
+
 	/**
 	 * @see ./edit.js
 	 */

@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,13 +22,18 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save( {attributes} ) {
+	let starIcons = Array(5).fill('&#9733;', 0, attributes.stars).join('');
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ __(
-				'Ct Blockmania – hello from the saved content!',
-				'ct-blockmania'
-			) }
-		</p>
+		<div { ...useBlockProps.save() }>
+			<div className="stars">{starIcons}</div>
+			<RichText.Content tagName="div" className="quote" value={ attributes.quote } />
+			<div className="quote-profile">
+				<div className="photo">
+					<img src={attributes.imgUrl} alt={'Photo of_____'}/>
+				</div>
+			</div>
+		</div>
 	);
 }
