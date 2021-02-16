@@ -11,8 +11,13 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, RichText, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { SelectControl } from '@wordpress/components';
+import { useBlockProps,
+		RichText,
+		MediaUpload,
+		MediaUploadCheck,
+		InspectorControls,
+} from '@wordpress/block-editor';
+import { SelectControl, PanelBody, PanelRow } from '@wordpress/components';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -35,6 +40,13 @@ export default function edit({attributes, setAttributes}) {
 
 	return (
 		<div { ...useBlockProps() }>
+			<InspectorControls>
+				<PanelBody title="Basic" InitialOpen={true}>
+					<PanelRow>
+						<p>Anything we want</p>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
 			<SelectControl
 				label={ __( 'Select a rating:' ) }
 				value={ attributes.stars }
