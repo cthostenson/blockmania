@@ -16,8 +16,14 @@ import { useBlockProps,
 		MediaUpload,
 		MediaUploadCheck,
 		InspectorControls,
+		PanelColorSettings
 } from '@wordpress/block-editor';
-import { SelectControl, PanelBody, PanelRow } from '@wordpress/components';
+import { SelectControl, PanelBody, PanelRow, ColorPicker, ColorPalette } from '@wordpress/components';
+import {select} from '@wordpress/data';
+
+
+import {CTColorPanel} from '../common/CTColorPanel';
+import {CTStars} from '../common/CTStars';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -38,27 +44,43 @@ export default function edit({attributes, setAttributes}) {
 	//let attributes = props.attributes;
 	//let {attributes, setAttributes} = props;
 
+	let divStyles = {
+		backgroundColor: attributes.backgroundColor,
+		color: attributes.textColor,
+		backgroundColor2: attributes.backgroundColor2,
+		color2: attributes.textColor2,
+	}
+
+	let settings = select('core/editor').getEditorSettings();
+
 	return (
-		<div { ...useBlockProps() }>
+		<div { ...useBlockProps({style: divStyles} ) }>
 			<InspectorControls>
 				<PanelBody title="Basic" InitialOpen={true}>
 					<PanelRow>
-						<p>Anything we want</p>
+						<ColorPalette
+						label={__('Background Color')}
+						value={attributes.backgroundColor}
+						onChange={(color) => {setAttributes({backgroundColor: color})}}
+						colors={[
+							{name: 'Red', color: '#FF0000'},
+							{name: 'Green', color: '#00FF00'},
+							{name: 'Blue', color: '#0000FF'},
+						]}/>
+					</PanelRow>
+					<PanelRow>
+						<ColorPicker
+							value={attributes.textColor}
+							onChangeComplete={(color) => {setAttributes({textColor: color.hex})}}
+							disableAlpha
+						/>
+					</PanelRow>
+					<PanelRow>
+						<CTColorPanel attributes={attributes} setAttributes={setAttributes}/>
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
-			<SelectControl
-				label={ __( 'Select a rating:' ) }
-				value={ attributes.stars }
-				onChange={ ( stars ) => { setAttributes( { stars } ) } }
-				options={ [
-					{ value: '1', label: '*' },
-					{ value: '2', label: '**' },
-					{ value: '3', label: '***' },
-					{ value: '4', label: '****' },
-					{ value: '5', label: '*****' },
-				] }
-			/>
+			<CTStars attributes={attributes} setAttributes={setAttributes}/>
 			<RichText
 				tagName="div" // The tag here is the element output and editable in the admin
 				value={ attributes.quote } // Any existing content, either from the database or an attribute default

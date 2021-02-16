@@ -25,8 +25,12 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 export default function save( {attributes} ) {
 	let starIcons = Array(5).fill('&#9733;', 0, attributes.stars).join('');
 
+	let divStyles = {
+		backgroundColor: attributes.backgroundColor,
+	}
+
 	return (
-		<div { ...useBlockProps.save() }>
+		<div { ...useBlockProps.save({style: divStyles}) }>
 			<div className="program-grid">
 				<div className="program-column">
 					<div className="quote-profile">

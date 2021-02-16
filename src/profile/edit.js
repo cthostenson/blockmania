@@ -11,8 +11,8 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, RichText, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { SelectControl } from '@wordpress/components';
+import {useBlockProps, RichText, MediaUpload, MediaUploadCheck, InspectorControls} from '@wordpress/block-editor';
+import {ColorPalette, ColorPicker, PanelBody, PanelRow, SelectControl, ToggleControl} from '@wordpress/components';
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -20,6 +20,7 @@ import { SelectControl } from '@wordpress/components';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+import {CTColorPanel} from "../common/CTColorPanel";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -32,9 +33,39 @@ import './editor.scss';
 export default function edit({attributes, setAttributes}) {
 	//let attributes = props.attributes;
 	//let {attributes, setAttributes} = props;
+	let divStyles = {
+		backgroundColor: attributes.backgroundColor,
+	}
 
 	return (
-		<div { ...useBlockProps() }>
+		<div { ...useBlockProps({style: divStyles}) }>
+			<InspectorControls>
+				<PanelBody title="Color" InitialOpen={true}>
+					<PanelRow>
+						<ColorPalette
+							label={__('Background Color')}
+							value={attributes.backgroundColor}
+							onChange={(color) => {setAttributes({backgroundColor: color})}}
+							colors={[
+								{name: 'Slate Grey', color: '#202626'},
+								{name: 'Brick Red', color: '#BC4024'},
+								{name: 'Light Grey', color: '#818270'},
+								{name: 'Lime', color: '#7EB42B'},
+								{name: 'Light Grey', color: '#D7E5B2'},
+							]}/>
+					</PanelRow>
+				</PanelBody>
+				<PanelBody title="Layout" InitialOpen={false}>
+					<PanelRow>
+						<ToggleControl
+							label={ __( 'Show Image' ) }
+							checked={ !! attributes.showImage }
+							onChange={ (img) => setAttributes({showImage: img}) }
+							help={ !! attributes.showImage ? __( 'Showing image' ) : __( 'Hiding image' ) }
+						/>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
 
 			<div className="quote-profile">
 				<div className="photo">

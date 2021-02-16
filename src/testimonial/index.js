@@ -88,7 +88,20 @@ registerBlockType( 'create-block/testimonial', {
 		imgUrl: {
 			type: 'string',
 			default: 'https://placehold.it/75/',
+		},
+		backgroundColor: {
+			type: 'string',
+		},
+		textColor: {
+			type: 'string',
+		},
+		backgroundColor2: {
+			type: 'string',
+		},
+		textColor2: {
+			type: 'string',
 		}
+
 	},
 
 	/**

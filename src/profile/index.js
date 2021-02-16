@@ -89,6 +89,12 @@ registerBlockType( 'create-block/profile', {
 		imgUrl: {
 			type: 'string',
 			default: 'https://placehold.it/75/',
+		},
+		backgroundColor: {
+			type: 'string',
+		},
+		showImage: {
+			type: 'boolean',
 		}
 	},
 
