@@ -27,6 +27,7 @@ export default function save( {attributes} ) {
 
 	let divStyles = {
 		backgroundColor: attributes.backgroundColor,
+
 	}
 
 	return (

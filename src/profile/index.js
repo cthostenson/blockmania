@@ -94,7 +94,7 @@ registerBlockType( 'create-block/profile', {
 			type: 'string',
 		},
 		showImage: {
-			type: 'boolean',
+			type: 'string',
 		}
 	},
 

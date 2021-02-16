@@ -64,6 +64,17 @@
   margin: 0 auto;
   background-color: #F3F3F3;
 }
+.wp-block-create-block-profile.img-large {
+  width: 200px;
+  height: 200px;
+}
+.wp-block-create-block-profile.img-small {
+  width: 75px;
+  height: 75px;
+}
+.wp-block-create-block-profile.img-none {
+  display: none;
+}
 .wp-block-create-block-profile .program-grid {
   display: -ms-grid;
   display: grid;

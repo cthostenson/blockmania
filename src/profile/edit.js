@@ -57,12 +57,15 @@ export default function edit({attributes, setAttributes}) {
 				</PanelBody>
 				<PanelBody title="Layout" InitialOpen={false}>
 					<PanelRow>
-						<ToggleControl
-							label={ __( 'Show Image' ) }
-							checked={ !! attributes.showImage }
-							onChange={ (img) => setAttributes({showImage: img}) }
-							help={ !! attributes.showImage ? __( 'Showing image' ) : __( 'Hiding image' ) }
-						/>
+						<SelectControl
+							label={__('Show Image')}
+							value={attributes.showImage}
+							onChange={(showImage) => { setAttributes( {showImage} ) } }
+							options={[
+								{value: 'img-large', label: 'Show Large Image'},
+								{value: 'img-small', label: 'Show Small Image'},
+								{value: 'img-none', label: 'Show No Image'},
+							]}/>
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>

@@ -785,15 +785,24 @@ function edit(_ref) {
   }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
     title: "Layout",
     InitialOpen: false
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToggleControl"], {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
     label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Show Image'),
-    checked: !!attributes.showImage,
-    onChange: function onChange(img) {
-      return setAttributes({
-        showImage: img
+    value: attributes.showImage,
+    onChange: function onChange(showImage) {
+      setAttributes({
+        showImage: showImage
       });
     },
-    help: !!attributes.showImage ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Showing image') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Hiding image')
+    options: [{
+      value: 'img-large',
+      label: 'Show Large Image'
+    }, {
+      value: 'img-small',
+      label: 'Show Small Image'
+    }, {
+      value: 'img-none',
+      label: 'Show No Image'
+    }]
   })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "quote-profile"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -966,7 +975,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('cre
       type: 'string'
     },
     showImage: {
-      type: 'boolean'
+      type: 'string'
     }
   },
 

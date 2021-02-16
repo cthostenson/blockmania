@@ -12,6 +12,20 @@
   margin: 0 auto;
   background-color: #F3F3F3;
 
+  &.img-large {
+	width: 200px;
+	height: 200px;
+  }
+
+  &.img-small {
+	width: 75px;
+	height: 75px;
+  }
+
+  &.img-none {
+	display: none;
+  }
+
   .program-grid {
 	display: grid;
 	grid-template-columns: 25% 75%;
