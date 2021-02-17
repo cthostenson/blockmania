@@ -95,6 +95,11 @@ registerBlockType( 'create-block/profile', {
 		},
 		showImage: {
 			type: 'string',
+			default: 'img-show',
+		},
+		showLine: {
+			type: 'string',
+			default: 'img-show',
 		}
 	},
 

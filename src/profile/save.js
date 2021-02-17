@@ -33,7 +33,7 @@ export default function save( {attributes} ) {
 	return (
 		<div { ...useBlockProps.save({style: divStyles}) }>
 			<div className="program-grid">
-				<div className="program-column">
+				<div className={"program-column " + attributes.showImage}>
 					<div className="quote-profile">
 						<div className="photo">
 							<img src={attributes.imgUrl} alt={'Photo of_____'}/>
@@ -42,6 +42,7 @@ export default function save( {attributes} ) {
 				</div>
 				<div className="program-column">
 					<RichText.Content tagName="h2" className="program" value={ attributes.program } />
+					<hr className={attributes.showLine} />
 					<RichText.Content tagName="div" className="description" value={ attributes.description } />
 				</div>
 			</div>

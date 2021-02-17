@@ -794,14 +794,26 @@ function edit(_ref) {
       });
     },
     options: [{
-      value: 'img-large',
-      label: 'Show Large Image'
-    }, {
-      value: 'img-small',
-      label: 'Show Small Image'
+      value: 'img-show',
+      label: 'Show Image'
     }, {
       value: 'img-none',
       label: 'Show No Image'
+    }]
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Show Horizontal Line'),
+    value: attributes.showLine,
+    onChange: function onChange(showLine) {
+      setAttributes({
+        showLine: showLine
+      });
+    },
+    options: [{
+      value: 'img-show',
+      label: 'Show Line'
+    }, {
+      value: 'img-none',
+      label: 'Show Nothing'
     }]
   })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "quote-profile"
@@ -818,7 +830,8 @@ function edit(_ref) {
       var open = _ref2.open;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
         src: attributes.imgUrl,
-        onClick: open
+        onClick: open,
+        className: attributes.showImage
       });
     }
   })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
@@ -836,6 +849,8 @@ function edit(_ref) {
     ,
     placeholder: "Program Title" // Display this text before any content has been added by the user
 
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("hr", {
+    className: attributes.showLine
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
     tagName: "div" // The tag here is the element output and editable in the admin
     ,
@@ -975,7 +990,12 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('cre
       type: 'string'
     },
     showImage: {
-      type: 'string'
+      type: 'string',
+      default: 'img-show'
+    },
+    showLine: {
+      type: 'string',
+      default: 'img-show'
     }
   },
 
@@ -1045,7 +1065,7 @@ function save(_ref) {
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "program-grid"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-    className: "program-column"
+    className: "program-column " + attributes.showImage
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "quote-profile"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -1059,6 +1079,8 @@ function save(_ref) {
     tagName: "h2",
     className: "program",
     value: attributes.program
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("hr", {
+    className: attributes.showLine
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
     tagName: "div",
     className: "description",

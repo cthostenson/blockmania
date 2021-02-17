@@ -62,9 +62,18 @@ export default function edit({attributes, setAttributes}) {
 							value={attributes.showImage}
 							onChange={(showImage) => { setAttributes( {showImage} ) } }
 							options={[
-								{value: 'img-large', label: 'Show Large Image'},
-								{value: 'img-small', label: 'Show Small Image'},
+								{value: 'img-show', label: 'Show Image'},
 								{value: 'img-none', label: 'Show No Image'},
+							]}/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
+							label={__('Show Horizontal Line')}
+							value={attributes.showLine}
+							onChange={(showLine) => { setAttributes( {showLine} ) } }
+							options={[
+								{value: 'img-show', label: 'Show Line'},
+								{value: 'img-none', label: 'Show Nothing'},
 							]}/>
 					</PanelRow>
 				</PanelBody>
@@ -76,12 +85,11 @@ export default function edit({attributes, setAttributes}) {
 						<MediaUpload
 							allowedTypes={['image']}
 							onSelect={ ( img ) => setAttributes( { imgUrl: img.sizes.thumbnail.url } ) }
-							render={ ({open}) => <img src={attributes.imgUrl} onClick={open}/>}
+							render={ ({open}) => <img src={attributes.imgUrl} onClick={open} className={attributes.showImage} />}
 						/>
 					</MediaUploadCheck>
 				</div>
 			</div>
-
 			<RichText
 				tagName="h2" // The tag here is the element output and editable in the admin
 				value={ attributes.program } // Any existing content, either from the database or an attribute default
@@ -89,7 +97,7 @@ export default function edit({attributes, setAttributes}) {
 				onChange={ ( program ) => setAttributes( { program } ) } // Store updated content as a block attribute
 				placeholder="Program Title"// Display this text before any content has been added by the user
 			/>
-
+			<hr className={attributes.showLine} />
 			<RichText
 				tagName="div" // The tag here is the element output and editable in the admin
 				value={ attributes.description } // Any existing content, either from the database or an attribute default
