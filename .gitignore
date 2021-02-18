@@ -25,3 +25,10 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# Map files
+*.css.map
+*.js.map
+
+# block assess file
+build/index.asset.php
