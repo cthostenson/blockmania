@@ -473,6 +473,201 @@ module.exports = _unsupportedIterableToArray;
 
 /***/ }),
 
+/***/ "./src/border-control/edit.js":
+/*!************************************!*\
+  !*** ./src/border-control/edit.js ***!
+  \************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
+
+// uses these imports
+
+
+
+
+
+
+var borderInspectorControls = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__["createHigherOrderComponent"])(function (BlockEdit) {
+  return function (props) {
+    var divStyles = {
+      borderStyle: props.attributes.borderStyle || 'none',
+      borderWidth: props.attributes.borderWidth + 'px',
+      borderColor: props.attributes.borderColor,
+      borderRadius: props.attributes.borderRadius + 'px'
+    };
+    var settings = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__["select"])('core/editor').getEditorSettings();
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "wp-block",
+      style: divStyles
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockEdit, props)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: "Border Controls"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      label: "Border Style",
+      value: props.attributes.borderStyle,
+      options: [{
+        label: 'None',
+        value: 'none'
+      }, {
+        label: 'Solid',
+        value: 'solid'
+      }, {
+        label: 'Dashed',
+        value: 'dashed'
+      }, {
+        label: 'Dotted',
+        value: 'dotted'
+      }],
+      onChange: function onChange(value) {
+        props.setAttributes({
+          borderStyle: value
+        });
+      },
+      style: {
+        width: '100%'
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["RangeControl"], {
+      label: "Border Width",
+      value: props.attributes.borderWidth,
+      onChange: function onChange(value) {
+        props.setAttributes({
+          borderWidth: value
+        });
+      },
+      min: 0.5,
+      max: 5,
+      step: 0.5
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["RangeControl"], {
+      label: "Border Radius",
+      value: props.attributes.borderRadius,
+      onChange: function onChange(value) {
+        props.setAttributes({
+          borderRadius: value
+        });
+      },
+      min: 0,
+      max: 10,
+      step: 1
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPalette"], {
+      label: "Border Color",
+      value: props.attributes.borderColor,
+      onChange: function onChange(value) {
+        props.setAttributes({
+          borderColor: value
+        });
+      },
+      colors: settings.colors
+    }))));
+  };
+}, 'blockInspectorControls');
+Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_4__["addFilter"])('editor.BlockEdit', 'ct-blockmania/border-control/inspector-controls', borderInspectorControls);
+
+/***/ }),
+
+/***/ "./src/border-control/index.js":
+/*!*************************************!*\
+  !*** ./src/border-control/index.js ***!
+  \*************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./settings */ "./src/border-control/settings.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/border-control/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/border-control/save.js");
+
+
+
+
+/***/ }),
+
+/***/ "./src/border-control/save.js":
+/*!************************************!*\
+  !*** ./src/border-control/save.js ***!
+  \************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var addBorderProps = function addBorderProps(saveElementProps, blockType, attributes) {
+  // only add if they picked a border style
+  if (attributes.borderStyle) {
+    saveElementProps.style = saveElementProps.style || {};
+    saveElementProps.style.borderStyle = attributes.borderStyle;
+    saveElementProps.style.borderColor = attributes.borderColor;
+    saveElementProps.style.borderWidth = attributes.borderWidth;
+    saveElementProps.style.borderRadius = attributes.borderRadius;
+  }
+
+  return saveElementProps;
+};
+
+Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__["addFilter"])('blocks.getSaveContent.extraProps', 'ct-blockmania/border-control/extra-pros', addBorderProps);
+
+/***/ }),
+
+/***/ "./src/border-control/settings.js":
+/*!****************************************!*\
+  !*** ./src/border-control/settings.js ***!
+  \****************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__);
+// uses these imports
+
+
+var addBorderAttributes = function addBorderAttributes(settings, name) {
+  // settings is the object used to declare the block
+  // name is the name of the block (if you wanted to apply this only to certain blocks)
+  // append the settings
+  settings.attributes.borderStyle = {
+    type: 'string',
+    default: ''
+  };
+  settings.attributes.borderColor = {
+    type: 'string',
+    default: '#000'
+  };
+  settings.attributes.borderWidth = {
+    type: 'number',
+    default: 2
+  };
+  settings.attributes.borderRadius = {
+    type: 'number',
+    default: 0
+  }; // (modify any additional settings)
+
+  return settings;
+};
+
+Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__["addFilter"])('blocks.registerBlockType', 'ct-blockmania/border-control/settings', addBorderAttributes);
+
+/***/ }),
+
 /***/ "./src/common/CTColorPanel.js":
 /*!************************************!*\
   !*** ./src/common/CTColorPanel.js ***!
@@ -682,8 +877,10 @@ var CTStars = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _testimonial_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./testimonial/index */ "./src/testimonial/index.js");
 /* harmony import */ var _profile_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profile/index */ "./src/profile/index.js");
+/* harmony import */ var _border_control_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./border-control/index */ "./src/border-control/index.js");
 // include all block index.js files
 // repeat for each block
+
 
 
 
@@ -1483,6 +1680,17 @@ function save(_ref) {
 
 /***/ }),
 
+/***/ "@wordpress/compose":
+/*!*********************************!*\
+  !*** external ["wp","compose"] ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["compose"]; }());
+
+/***/ }),
+
 /***/ "@wordpress/data":
 /*!******************************!*\
   !*** external ["wp","data"] ***!
@@ -1502,6 +1710,17 @@ function save(_ref) {
 /***/ (function(module, exports) {
 
 (function() { module.exports = window["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/hooks":
+/*!*******************************!*\
+  !*** external ["wp","hooks"] ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["hooks"]; }());
 
 /***/ }),
 
